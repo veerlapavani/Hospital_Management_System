@@ -1,16 +1,25 @@
-from django.urls import path
-from . import views
-urlpatterns = [
-    path('', views.home, name='home'),
-    path('register/', views.register, name='register'),
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
-    path('book_appointment/', views.book_appointment, name='book_appointment'),
-    path('departments/', views.department_list, name='department_list'),
-    path('doctors/', views.doctor_list, name='doctor_list'),
-    path('doctor/<int:doctor_id>/', views.doctor_detail, name='doctor_detail'),
-    path('profile/', views.patient_profile, name='patient_profile'),
-    path('appointments/', views.appointment_list, name='appointment_list'),
-    path('book-appointment/', views.book_appointment, name='book_appointment'),
-]
+"""
+URL configuration for Pro project.
 
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path,include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('App.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),  # Add this line
+
+]
